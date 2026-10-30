@@ -1,0 +1,4 @@
+mss==10.2.0
+Pillow==13.0.0
+pytesseract==0.3.13
+pyinstaller==6.22.3

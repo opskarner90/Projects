@@ -1,0 +1,6 @@
+Dane/
+Raporty/
+vendor/
+*.spec
+.venv-build/
+*selftest.json

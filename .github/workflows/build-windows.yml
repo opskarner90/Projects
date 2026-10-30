@@ -1,0 +1,45 @@
+name: Build Windows Portable EXE
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, master, wampir66-portable]
+    paths:
+      - 'projects/wampir66-portable/**'
+      - '.github/workflows/build-windows.yml'
+  pull_request:
+    paths:
+      - 'projects/wampir66-portable/**'
+      - '.github/workflows/build-windows.yml'
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 25
+    defaults:
+      run:
+        working-directory: projects/wampir66-portable
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          architecture: x64
+      - name: Install Tesseract
+        run: |
+          choco install tesseract --yes --no-progress
+          if ($LASTEXITCODE -ne 0) { throw 'Tesseract installation failed' }
+      - name: Build and test source and portable EXE
+        run: ./build-windows.ps1
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Windows-test-results
+          path: projects/wampir66-portable/*selftest.json
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Wampir66-Monitor-Portable-Windows
+          path: projects/wampir66-portable/dist/*
+          if-no-files-found: error

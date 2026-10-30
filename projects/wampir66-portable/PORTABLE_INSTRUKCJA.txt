@@ -1,0 +1,19 @@
+WAMPIR66 MONITOR PORTABLE — Windows 10/11 x64
+
+Rozpakuj cały artefakt Wampir66-Monitor-Portable-Windows do folderu z prawem zapisu.
+Uruchom Wampir66_Monitor_Portable.exe lub URUCHOM.bat.
+Python i Tesseract nie są potrzebne na komputerze docelowym; są dołączone do EXE.
+Pierwszy start rozpakowuje składniki do folderu tymczasowego i może potrwać.
+
+1. Otwórz transmisję w przeglądarce i pozostaw alerty widoczne.
+2. Kliknij Zaznacz obszar OCR i zaznacz obszar alertów.
+3. Wpisz nazwę transmisji i kliknij Rozpocznij LIVE.
+4. Na koniec kliknij Zakończ LIVE i zapisz raport. Poczekaj na zakończenie OCR.
+5. Baza i ustawienia są w Dane, raporty CSV/TXT w Raporty obok EXE.
+
+OCR może błędnie odczytać lub pominąć alerty. Raport nie potwierdza płatności.
+Program nie łączy się z historią transakcji YouTube ani nie otwiera transmisji.
+
+BUDOWANIE ZE ŹRÓDEŁ: zobacz README.md i uruchom BUILD_EXE.bat na Windows
+z Pythonem 3.12 x64 i Tesseract OCR x64. Alternatywa: workflow GitHub Actions.
+Nie uznawaj pliku EXE za przetestowany, jeśli build lub test exe-selftest.json zawiódł.
